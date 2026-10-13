@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #0670b8;
+  --color-brand-bright: #0a8ae0;
+  --color-brand-deep: #04508a;
+  --color-steel: #4d4e50;
+  --color-ink: #17212b;
+  --color-mist: #eef2f6;
+  --font-display: "Michroma", "Eurostile", "Arial Black", sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: #fff;
+  color: var(--color-ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible { outline: 3px solid var(--color-brand-bright); outline-offset: 3px; }
+section[id] { scroll-margin-top: 80px; }
+
+/* ---------- 3D scene primitives ---------- */
+.scene-stage { perspective: 1400px; }
+.scene-3d, .scene-3d * { transform-style: preserve-3d; }
+.layer { position: absolute; backface-visibility: hidden; }
+
+/* a box standing on the ground plane (x right, y down, z up) */
+.blk { position: absolute; }
+.blk > div { position: absolute; }
+.blk .top   { left: 0; top: 0; width: 100%; height: 100%; }
+.blk .front { left: 0; width: 100%; transform-origin: bottom; transform: rotateX(-90deg); }
+.blk .side  { top: 0; height: 100%; transform-origin: left; transform: rotateY(-90deg); }
+.windows {
+  background-image:
+    linear-gradient(rgba(255,255,255,.38) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255,255,255,.38) 2px, transparent 2px);
+  background-size: 14px 16px;
+}
+
+@keyframes bob { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.bob   { animation: bob 5s ease-in-out infinite; }
+.bob-2 { animation: bob 6.5s ease-in-out -2s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bob, .bob-2 { animation: none; }
+  html { scroll-behavior: auto; }
+}
