@@ -80,7 +80,7 @@ export default function Hero() {
           </h1>
           <p className="mt-4 text-lg font-medium text-steel md:text-xl">Turning views into leads and leads into sales</p>
           <a
-            href="#contact"
+            href="#services"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#151515] px-8 py-4 text-base font-bold text-white transition-colors hover:bg-black"
           >
             Get Started <span aria-hidden>→</span>

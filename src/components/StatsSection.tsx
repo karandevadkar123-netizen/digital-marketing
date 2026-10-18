@@ -23,7 +23,7 @@ function Count({ to }: { to: number }) {
       setN(to);
       return;
     }
-    const controls = animate(0, to, { duration: 1.6, ease: "easeOut", onUpdate: (v) => setN(Math.round(v)) });
+    const controls = animate(0, to, { duration: 1, ease: "easeOut", onUpdate: (v) => setN(Math.round(v)) });
     return () => controls.stop();
   }, [inView, to]);
 
